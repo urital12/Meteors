@@ -55,7 +55,7 @@ function scene:create( event )
 	playBtn.y = display.contentHeight - 125
 	playBtn.fill.effect = "filter.contrast"
  
-  playBtn.fill.effect.contrast = 10
+  playBtn.fill.effect.contrast = 2
 	-- all display objects must be inserted into group
 	sceneGroup:insert( background )
   sceneGroup:insert(gameTitle)
