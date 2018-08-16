@@ -41,7 +41,7 @@ function scene:create( event )
 	
 	-- create/position logo/title image on upper-half of the screen
   
-  local gameTitle = display.newText ( "Meteorite",display.contentCenterX,200, 264, 142, "bangers.ttf", 60)
+  local gameTitle = display.newText ( "Meteorite",display.contentCenterX,200,  "bangers.ttf", 80)
 	gameTitle:setFillColor(1,1,1)
   
   
@@ -56,7 +56,9 @@ function scene:create( event )
 	playBtn.fill.effect = "filter.contrast"
  
   playBtn.fill.effect.contrast = 2
-	-- all display objects must be inserted into group
+	
+  
+  -- all display objects must be inserted into group
 	sceneGroup:insert( background )
   sceneGroup:insert(gameTitle)
 	sceneGroup:insert( playBtn )
@@ -69,7 +71,8 @@ function scene:show( event )
 	if phase == "will" then
 		-- Called when the scene is still off screen and is about to move on screen
 	elseif phase == "did" then
-		-- Called when the scene is now on screen
+    playBtn:addEventListener("tap", onPlayBtnRelease)
+	-- Called when the scene is now on screen
 		-- 
 		-- INSERT code here to make the scene come alive
 		-- e.g. start timers, begin animation, play audio, etc.
@@ -85,6 +88,7 @@ function scene:hide( event )
 		--
 		-- INSERT code here to pause the scene
 		-- e.g. stop timers, stop animation, unload sounds, etc.)
+    playBtn:removeEventListener("tap",onPlayBtnRelease)
 	elseif phase == "did" then
 		-- Called when the scene is now off screen
 	end	
